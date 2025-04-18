@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <StyledAppBar position="static">
       <Toolbar>
-        <Box display="flex" alignItems="center">
+        <Box display="flex" alignItems="center" data-testid="header-container">
           <Logo src={logo} alt="Retail Compass Logo" />
           <Typography variant="h4">Retail Compass</Typography>
         </Box>

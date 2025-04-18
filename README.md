@@ -65,6 +65,10 @@ npm install
 npm run dev
 ```
 
+5. Puedes ejeuctar las pruebas unitarias de los componentes :
+```
+npm run  test:watch
+```
 ## Contacto
 * Linkedin: [carlos yaco](https://www.linkedin.com/in/carlos-yaco-tincusi/)
 * website: [web](https://yacodev.com)
