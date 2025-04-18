@@ -1,23 +1,17 @@
-import { useState } from "react";
-import { Box, SelectChangeEvent, Card } from "@mui/material";
+import { Box, Card } from "@mui/material";
 
 import { SelectOption } from "../SelectOption";
 import { statusOptions } from "../../constants/status";
+import { FiltersProps } from "./interface";
+import { InputSearch } from "../InputSearch";
 
-export const Filters = () => {
-  const [statusFilter, setStatusFilter] = useState("");
-  const [brandFilter, setBrandFilter] = useState("");
-
-  const handleStatusChange = (event: SelectChangeEvent<string>) => {
-    setStatusFilter(event.target.value as string);
-  };
-
-  const handleBrandChange = (event: SelectChangeEvent<string>) => {
-    setBrandFilter(event.target.value as string);
-  };
-
+export const Filters = ({
+  statusFilter,
+  handleStatusChange,
+  handleInputChange,
+}: FiltersProps) => {
   return (
-    <Card sx={{ padding: 2, marginTop: 2, width: "200px" }}>
+    <Card sx={{ padding: 2, marginTop: 2, width: "15%" }}>
       <Box
         sx={{
           display: "flex",
@@ -34,11 +28,9 @@ export const Filters = () => {
           onChangeValue={handleStatusChange}
           label="Estado"
         />
-        <SelectOption
-          options={statusOptions}
-          value={brandFilter}
-          onChangeValue={handleBrandChange}
-          label="Marca"
+        <InputSearch
+          onInputChange={handleInputChange}
+          placeholder="Buscar por marca"
         />
       </Box>
     </Card>
