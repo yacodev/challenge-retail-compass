@@ -1,54 +1,73 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#  - challenge - Retail-compass
 
-Currently, two official plugins are available:
+En este repositorio se utiliza el stack de React + TypeScript + Vite para desarrollar el reto frontend de Retail-compass.
+Herramientas que se utilizaron:
+- Material UI
+- Axios para obtener los datos de la API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Explicación de la App
 
-## Expanding the ESLint configuration
+1. En la primera vista, la aplicación mostrará el listado de todos los productos
+2. Podras filtrar los productos por status, como por la marca del mismo.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Puedes acceder al link desplegado en:
+https://challenge-atlantic.vercel.app/
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+## Estructura del repositorio
+
+This repository has the following  organization:
+
+    ├── src                     # React - app
+        ├── components
+            ├── Filters              # Component
+            ├── Header  # Component
+            ├── InputSearch                 # Component
+            ├── ProductTable             # Component
+            ├── SelectOption             # Component
+        ├── Page
+            ├── Home                   # Page show all products
+        ├── hooks
+            ├── usePagination                # Manage pagination table
+        ├── helpers
+            ├── formatCurrency               # show in format currency
+        ├── constants
+            ├── status            # status filters constants
+        ├── interfaces
+            ├── Option                  
+            ├── Product                  
+        ├── services
+            ├── productServices         #  API services 
+            
+    └── README.md                   # README
+
+## Run
+
+En caso de querer clonar el repositorio y probar localmente, haz lo siguiente:
+
+1. Clone el repositorio.
+2. Renombra  el archivo `.env.template` con `.env` y   completa los valores de las variables de entorono :
+```
+VITE_BASE_URL = 
+VITE_API_KEY = 
+```
+3. Ejecutar:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Ejecutar
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+## Contacto
+* Linkedin: [carlos yaco](https://www.linkedin.com/in/carlos-yaco-tincusi/)
+* website: [web](https://yacodev.com)
+
+##  Licencia
+Este proyecto esta bajo la licencia [MIT](/LICENCE).

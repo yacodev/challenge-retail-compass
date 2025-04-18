@@ -2,7 +2,7 @@ import Grid from "@mui/material/Grid";
 import { Header } from "../../components/Header";
 import { Filters } from "../../components/Filters";
 import { useEffect, useState } from "react";
-import { Product } from "../../typescript/product.interface";
+import { Product } from "../../interfaces/product.interface";
 import { ProductTable } from "../../components/ProductTable";
 import { usePagination } from "../../hooks";
 import { SelectChangeEvent } from "@mui/material";

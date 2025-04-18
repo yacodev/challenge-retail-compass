@@ -1,4 +1,4 @@
-import { Option, typeStatusOption } from "../typescript/option.interface";
+import { Option, typeStatusOption } from "../interfaces/option.interface";
 
 export const statusOptions: Option[] = [
   {

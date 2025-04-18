@@ -4,7 +4,7 @@ import { GetProducts, GetProductResponse } from "./interface";
 import {
   Product,
   ProductServicesResponse,
-} from "../../typescript/product.interface";
+} from "../../interfaces/product.interface";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
 export const productServices = {

@@ -4,7 +4,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
-import { SelectOptionsProps } from "./typescript";
+import { SelectOptionsProps } from "./interface";
 
 export const SelectOption = ({
   options,

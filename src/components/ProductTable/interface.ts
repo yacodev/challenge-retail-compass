@@ -1,4 +1,4 @@
-import { Product } from "../../typescript/product.interface";
+import { Product } from "../../interfaces/product.interface";
 import { ChangeEvent, MouseEvent } from "react";
 
 export interface ProductTableProps {

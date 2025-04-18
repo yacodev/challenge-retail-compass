@@ -5,7 +5,7 @@ export function usePagination() {
   const [rowsPerPage, setRowsPerPage] = useState(20);
 
   const handlePageChange = (
-    event: MouseEvent<HTMLButtonElement> | null,
+    _event: MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
     setPage(newPage);
@@ -15,7 +15,6 @@ export function usePagination() {
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    //setPage(0);
   };
 
   return {
