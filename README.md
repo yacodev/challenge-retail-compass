@@ -12,7 +12,7 @@ Herramientas que se utilizaron:
 2. Podras filtrar los productos por status, como por la marca del mismo.
 
 Puedes acceder al link desplegado en:
-https://challenge-atlantic.vercel.app/
+https://challenge-retail-compass.vercel.app/
 
 
 ## Estructura del repositorio
