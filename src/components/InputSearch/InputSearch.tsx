@@ -1,8 +1,9 @@
-import { Icon } from "@iconify/react";
-import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-
+import SearchIcon from "@mui/icons-material/Search";
+import InputAdornment from "@mui/material/InputAdornment";
 import { InputSearchProps } from "./interface";
+import FormControl from "@mui/material/FormControl";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 export const InputSearch = ({
   onInputChange,
@@ -19,25 +20,22 @@ export const InputSearch = ({
   }, [inputValue]);
 
   return (
-    <TextField
-      onChange={(e) => setInputValue(e.target.value)}
-      size="small"
-      placeholder={placeholder}
-      InputProps={{
-        startAdornment: (
-          <Icon
-            style={{ marginRight: "17px" }}
-            fontSize="24px"
-            color="#919EAB"
-            icon="material-symbols:search"
-          />
-        ),
-      }}
-      sx={{
-        borderRadius: "10px",
-        minWidth: "100%",
-      }}
-      value={inputValue}
-    />
+    <FormControl fullWidth>
+      <OutlinedInput
+        onChange={(e) => setInputValue(e.target.value)}
+        size="small"
+        placeholder={placeholder}
+        value={inputValue}
+        startAdornment={
+          <InputAdornment position="start">
+            <SearchIcon color="action" />
+          </InputAdornment>
+        }
+        sx={{
+          borderRadius: "10px",
+          minWidth: "100%",
+        }}
+      />
+    </FormControl>
   );
 };

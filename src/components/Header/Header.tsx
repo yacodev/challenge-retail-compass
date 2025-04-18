@@ -1,15 +1,8 @@
-import { AppBar, Toolbar, Typography, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Toolbar from "@mui/material/Toolbar";
 import logo from "../../assets/retail-compass.png";
-
-const StyledAppBar = styled(AppBar)({
-  backgroundColor: "#3f51b5",
-});
-
-const Logo = styled("img")({
-  height: "40px",
-  marginRight: "16px",
-});
+import { Logo, StyledAppBar } from "./styles";
 
 export const Header = () => {
   return (
@@ -17,9 +10,7 @@ export const Header = () => {
       <Toolbar>
         <Box display="flex" alignItems="center">
           <Logo src={logo} alt="Retail Compass Logo" />
-          <Typography variant="h6" component="div">
-            Retail Compass
-          </Typography>
+          <Typography variant="h4">Retail Compass</Typography>
         </Box>
       </Toolbar>
     </StyledAppBar>
