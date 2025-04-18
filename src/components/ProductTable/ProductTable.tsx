@@ -1,23 +1,14 @@
-import {
-  Box,
-  Card,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import TablePagination from "@mui/material/TablePagination";
-import { styled } from "@mui/material/styles";
-import { ProductTableProps } from "./interface";
+import Card from "@mui/material/Card";
 
-const StyledTableCell = styled(TableCell)({
-  backgroundColor: "#3f51b5",
-  color: "white",
-  fontWeight: "bold",
-});
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import CircularProgress from "@mui/material/CircularProgress";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TablePagination from "@mui/material/TablePagination";
+import { ProductTableProps } from "./interface";
+import { StyledTableCell, ProductTableContainer } from "./styles";
+import TableCell from "@mui/material/TableCell";
 
 export const ProductTable = ({
   products,
@@ -25,58 +16,65 @@ export const ProductTable = ({
   onPageChange,
   page,
   rowsPerPage,
+  countProducts = 100,
+  loading,
 }: ProductTableProps) => {
+  const showProducts = products?.length !== 0 && loading === false;
+
   return (
     <Card sx={{ padding: 2, marginTop: 2, width: "80%" }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-          height: "calc(100vh - 64px)",
-          overflow: "auto",
-          padding: 2,
-        }}
-      >
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Nombre</StyledTableCell>
-                <StyledTableCell>Tienda</StyledTableCell>
-                <StyledTableCell align="right">Precio Normal</StyledTableCell>
-                <StyledTableCell align="right">Precio Oferta</StyledTableCell>
-                <StyledTableCell align="right">Precio Más Bajo</StyledTableCell>
-                <StyledTableCell align="right">Descuento</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {products?.map((product) => (
+      <ProductTableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Nombre</StyledTableCell>
+              <StyledTableCell>Marca</StyledTableCell>
+              <StyledTableCell align="right">Precio Normal</StyledTableCell>
+              <StyledTableCell align="right">Precio Oferta</StyledTableCell>
+              <StyledTableCell align="right">Precio Más Bajo</StyledTableCell>
+              <StyledTableCell align="right">Descuento</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {showProducts &&
+              products?.map((product) => (
                 <TableRow key={product.productId}>
                   <TableCell>{product.name}</TableCell>
                   <TableCell>{product.brand}</TableCell>
-                  <TableCell align="right">
-                    {product.prices.normalPrice}
-                  </TableCell>
-                  <TableCell align="right">
-                    {product.prices.offerPrice}
-                  </TableCell>
-                  <TableCell align="right">{product.prices.lowest}</TableCell>
-                  <TableCell align="right">{0}</TableCell>
+                  <TableCell align="right">{product.normalPrice}</TableCell>
+                  <TableCell align="right">{product.offerPrice}</TableCell>
+                  <TableCell align="right">{product.lowestPrice}</TableCell>
+                  <TableCell align="right">{product.discount}</TableCell>
                 </TableRow>
               ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+            {!showProducts && !loading && (
+              <TableRow>
+                <TableCell colSpan={6} align="center">
+                  No hay productos encontrados
+                </TableCell>
+              </TableRow>
+            )}
+            {loading && (
+              <TableRow>
+                <TableCell colSpan={6} align="center">
+                  <CircularProgress />
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+
         <TablePagination
           component="div"
-          count={100}
+          count={countProducts}
           page={page}
           onPageChange={onPageChange}
           rowsPerPage={rowsPerPage}
           onRowsPerPageChange={onRowsPerPageChange}
+          rowsPerPageOptions={[20, 50, 100, 200]}
+          labelRowsPerPage="Filas por página:"
         />
-      </Box>
+      </ProductTableContainer>
     </Card>
   );
 };

@@ -11,8 +11,10 @@ import { productServices } from "../../services/products/productServices";
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[] | null>([]);
+  const [countProducts, setCountProducts] = useState<number>(0);
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [brandFilter, setBrandFilter] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const { page, rowsPerPage, handlePageChange, handleChangeRowsPerPage } =
     usePagination();
@@ -27,6 +29,7 @@ export const Home = () => {
 
   useEffect(() => {
     const getAllProduct = async () => {
+      setLoading(true);
       const params: GetProducts = {
         page,
         size: rowsPerPage,
@@ -36,12 +39,12 @@ export const Home = () => {
       if (brandFilter) params.brand = brandFilter;
 
       const response = await productServices.getProducts(params);
-      setProducts(response);
+      setProducts(response?.products ?? []);
+      setCountProducts(response?.countProducts ?? 0);
+      setLoading(false);
     };
     getAllProduct();
   }, [page, rowsPerPage, statusFilter, brandFilter]);
-
-  console.log("products", products);
 
   return (
     <Grid container direction="column">
@@ -59,6 +62,8 @@ export const Home = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
             page={page}
             rowsPerPage={rowsPerPage}
+            countProducts={countProducts}
+            loading={loading}
           />
         )}
       </Grid>
